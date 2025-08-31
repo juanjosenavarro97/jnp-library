@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@eslint/js':
-        specifier: 9.33.0
-        version: 9.33.0
+        specifier: 9.34.0
+        version: 9.34.0
       '@types/react':
         specifier: 19.1.10
         version: 19.1.10
@@ -47,6 +47,9 @@ importers:
       vite:
         specifier: 7.1.2
         version: 7.1.2(@types/node@24.3.0)
+      vite-plugin-css-injected-by-js:
+        specifier: 3.5.2
+        version: 3.5.2(vite@7.1.2(@types/node@24.3.0))
       vite-plugin-dts:
         specifier: 4.5.4
         version: 4.5.4(@types/node@24.3.0)(rollup@4.49.0)(typescript@5.8.3)(vite@7.1.2(@types/node@24.3.0))
@@ -254,6 +257,10 @@ packages:
 
   '@eslint/js@9.33.0':
     resolution: {integrity: sha512-5K1/mKhWaMfreBGJTwval43JJmkip0RmM+3+IuqupeSKNC/Th2Kc7ucaq5ovTSra/OOKB9c58CGSz3QMVbWt0A==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@eslint/js@9.34.0':
+    resolution: {integrity: sha512-EoyvqQnBNsV1CWaEJ559rxXL4c8V92gxirbawSmVUOWXlsRxxQXl6LmCpdUblgxgSkDIqKnhzba2SjRTI/A5Rw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/object-schema@2.1.6':
@@ -1255,6 +1262,11 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
+  vite-plugin-css-injected-by-js@3.5.2:
+    resolution: {integrity: sha512-2MpU/Y+SCZyWUB6ua3HbJCrgnF0KACAsmzOQt1UvRVJCGF6S8xdA3ZUhWcWdM9ivG4I5az8PnQmwwrkC2CAQrQ==}
+    peerDependencies:
+      vite: '>2.0.0-0'
+
   vite-plugin-dts@4.5.4:
     resolution: {integrity: sha512-d4sOM8M/8z7vRXHHq/ebbblfaxENjogAAekcfcDCCwAyvGqnPrc7f4NZbvItS+g4WTgerW0xDwSz5qz11JT3vg==}
     peerDependencies:
@@ -1452,6 +1464,8 @@ snapshots:
       - supports-color
 
   '@eslint/js@9.33.0': {}
+
+  '@eslint/js@9.34.0': {}
 
   '@eslint/object-schema@2.1.6': {}
 
@@ -2445,6 +2459,10 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
+
+  vite-plugin-css-injected-by-js@3.5.2(vite@7.1.2(@types/node@24.3.0)):
+    dependencies:
+      vite: 7.1.2(@types/node@24.3.0)
 
   vite-plugin-dts@4.5.4(@types/node@24.3.0)(rollup@4.49.0)(typescript@5.8.3)(vite@7.1.2(@types/node@24.3.0)):
     dependencies:
