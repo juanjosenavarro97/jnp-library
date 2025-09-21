@@ -1,9 +1,9 @@
-import type { ButtonHTMLAttributes } from "react";
+interface JnpButtonProps {
+  text: string;
+}
 
-type JnpButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
-
-export function JnpButton(props: JnpButtonProps) {
-  return <button {...props}></button>;
+export function JnpButton({ text }: JnpButtonProps) {
+  return <button>{text}</button>;
 }
 
 export default JnpButton;

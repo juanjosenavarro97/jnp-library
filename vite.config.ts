@@ -21,7 +21,6 @@ export default defineConfig({
         index: resolve(__dirname, "src/index.ts"),
         "components/index": resolve(__dirname, "src/components/index.ts"),
         "components/jnp-button/index": resolve(__dirname, "src/components/jnp-button/index.ts"),
-        "components/jnp-text/index": resolve(__dirname, "src/components/jnp-text/index.ts"),
       },
       formats: ["es"],
     },
