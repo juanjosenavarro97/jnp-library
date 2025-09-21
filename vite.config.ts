@@ -7,7 +7,9 @@ import cssInjectedByJs from "vite-plugin-css-injected-by-js";
 export default defineConfig({
   plugins: [
     react(),
-    cssInjectedByJs(),
+    cssInjectedByJs({
+      jsAssetsFilterFunction: (chunk) => /^index\.js$/.test(chunk.fileName),
+    }),
     dts({
       tsconfigPath: "./tsconfig.app.json",
       insertTypesEntry: true,
@@ -21,6 +23,7 @@ export default defineConfig({
         index: resolve(__dirname, "src/index.ts"),
         "components/index": resolve(__dirname, "src/components/index.ts"),
         "components/jnp-button/index": resolve(__dirname, "src/components/jnp-button/index.ts"),
+        "components/jnp-input/index": resolve(__dirname, "src/components/jnp-input/index.ts"),
       },
       formats: ["es"],
     },
