@@ -7,9 +7,7 @@ import cssInjectedByJs from "vite-plugin-css-injected-by-js";
 export default defineConfig({
   plugins: [
     react(),
-    cssInjectedByJs({
-      jsAssetsFilterFunction: (chunk) => /^index\.js$/.test(chunk.fileName),
-    }),
+    cssInjectedByJs(),
     dts({
       tsconfigPath: "./tsconfig.app.json",
       insertTypesEntry: true,
