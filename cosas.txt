@@ -1,0 +1,2 @@
+- agregar husky que ejecute build de storybook (en el pre-commit a demas de formatear y lint)
+- agregar npm audit en el pre-commit
