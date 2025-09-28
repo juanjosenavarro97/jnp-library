@@ -61,8 +61,11 @@ jobs:
                   version: 9
                   run_install: false
 
-            - run: pnpm install --frozen-lockfile --prefer-offline
-            - run: pnpm lint
+            - name: Install deps
+              run: pnpm install --frozen-lockfile --prefer-offline
+
+            - name: Lint check
+              run: pnpm lint
 
     audit:
         name: Security audit
@@ -72,11 +75,20 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
+            - name: Setup node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+                  cache: "pnpm"
+
             - name: Setup pnpm
               uses: pnpm/action-setup@v4
               with:
                   version: 9
                   run_install: false
 
-            - run: pnpm install --frozen-lockfile --prefer-offline
-            - run: pnpm audit
+            - name: Install deps
+              run: pnpm install --frozen-lockfile --prefer-offline
+
+            - name: Audit
+              run: pnpm audit
