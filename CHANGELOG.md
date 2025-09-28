@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.0](https://github.com/juanjosenavarro97/jnp-library/compare/v1.0.0...v1.1.0) (2025-09-28)
+
+
+### Features
+
+* add visual test ([b6b6e90](https://github.com/juanjosenavarro97/jnp-library/commit/b6b6e9084ad90c36f3bce3ceecfe1febcf311047))
+* add visual test ([d4d5b21](https://github.com/juanjosenavarro97/jnp-library/commit/d4d5b21f3ab786df00cc959e23c72f127c4c1770))
+* add visual test CI ([30672b7](https://github.com/juanjosenavarro97/jnp-library/commit/30672b7d17ac17b891ace72a7b8792a707fab273))
+* change story book ([b4a6f04](https://github.com/juanjosenavarro97/jnp-library/commit/b4a6f0484ac505a8dbf4c0888b0c45c6f3cc17e1))
+
 ## 1.0.0 (2025-09-28)
 
 
