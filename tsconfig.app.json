@@ -20,6 +20,12 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    "types": ["@testing-library/jest-dom", "vitest/globals"],
+
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
