@@ -1,50 +1,54 @@
-name: Publish to npm on push to main
+name: Publish to npm
 
 on:
-    workflow_run:
-        workflows:
-            - "CI"
-        types:
-            - completed
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
 
 permissions:
-    contents: read
-    id-token: write
+  contents: read
+  id-token: write
 
 jobs:
-    publish:
-        runs-on: ubuntu-latest
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+          always-auth: true
 
-            - name: Setup pnpm
-              uses: pnpm/action-setup@v4
-              with:
-                  version: 10
-                  run_install: true
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          run_install: true
 
-            - name: Build
-              run: pnpm build
+      - name: Build
+        run: pnpm build
 
-            - name: Skip if version already on npm
-              id: check
-              shell: bash
-              run: |
-                  PKG_NAME=$(node -p "require('./package.json').name")
-                  PKG_VER=$(node -p "require('./package.json').version")
-                  if npm view "$PKG_NAME@$PKG_VER" version >/dev/null 2>&1; then
-                    echo "exists=true" >> "$GITHUB_OUTPUT"
-                  else
-                    echo "exists=false" >> "$GITHUB_OUTPUT"
-                  fi
+      - name: Skip if version already on npm
+        id: check
+        shell: bash
+        run: |
+          PKG_NAME=$(node -p "require('./package.json').name")
+          PKG_VER=$(node -p "require('./package.json').version")
+          if npm view "$PKG_NAME@$PKG_VER" version >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
 
-            - name: Publish
-              if: steps.check.outputs.exists == 'false'
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-              run: |
-                  # '--provenance' firma el build con OpenID Connect de GitHub
-                  # '--access public' sólo es necesario para paquetes con scope públicos
-                  npm publish --provenance $(jq -r '.publishConfig.access? // empty' package.json | awk '{print ($0=="public" ? "--access public" : "")}')
+      - name: Publish
+        if: steps.check.outputs.exists == 'false'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          # '--provenance' firma con OIDC
+          # '--access public' solo si tu publishConfig.access === 'public'
+          npm publish --provenance $(jq -r '.publishConfig.access? // empty' package.json | awk '{print ($0=="public" ? "--access public" : "")}')

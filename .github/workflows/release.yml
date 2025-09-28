@@ -1,4 +1,4 @@
-name: release-please
+name: Generate release
 on:
     push:
         branches: [main]
