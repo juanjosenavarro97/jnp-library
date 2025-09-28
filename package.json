@@ -1,6 +1,6 @@
 {
   "name": "jnp-library",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "exports": {
     "./components": {
@@ -24,6 +24,14 @@
     "registry": "https://registry.npmjs.org/",
     "provenance": true
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juanjosenavarro97/jnp-library"
+  },
+  "bugs": {
+    "url": "https://github.com/juanjosenavarro97/jnp-library/issues"
+  },
+  "homepage": "https://github.com/juanjosenavarro97/jnp-library",
   "scripts": {
     "dev": "storybook dev -p 3000",
     "build": "vite build",

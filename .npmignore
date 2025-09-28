@@ -21,3 +21,9 @@ node_modules/
 # Archivos locales o de build
 dist/
 coverage/
+
+src/vite-env.d.ts
+vite.config.ts
+readme.md
+index.html
+CHANGELOG.md
