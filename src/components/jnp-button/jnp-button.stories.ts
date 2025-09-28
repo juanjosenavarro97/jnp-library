@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { JnpButton } from "./jnp-button";
 
 const meta = {
-  title: "Components/Button/styles",
+  title: "Components/Button",
   component: JnpButton,
   tags: ["autodocs"],
   argTypes: {
@@ -14,6 +14,7 @@ const meta = {
     },
     rounded: { control: "boolean" },
     full: { control: "boolean" },
+    disabled: { control: "boolean" },
     onClick: { action: "clicked" },
   },
 } satisfies Meta<typeof JnpButton>;
