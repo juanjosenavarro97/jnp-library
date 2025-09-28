@@ -30,12 +30,15 @@
     "audit": "pnpm audit",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots",
     "prepare": "husky install"
   },
   "devDependencies": {
     "@commitlint/cli": "20.0.0",
     "@commitlint/config-conventional": "20.0.0",
     "@eslint/js": "9.36.0",
+    "@playwright/test": "1.55.1",
     "@storybook/addon-docs": "9.1.8",
     "@storybook/addon-onboarding": "9.1.8",
     "@storybook/react-vite": "9.1.8",
