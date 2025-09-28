@@ -1,22 +1,35 @@
-import clsx from "clsx";
 import styles from "./jnp-button.module.css";
+import clsx from "clsx";
 
-type Variant = "primary" | "secondary";
+export type Variant = "primary" | "secondary" | "info" | "warning" | "danger";
 
 interface JnpButtonProps {
-  text: string;
+  children: string;
   variant?: Variant;
+  rounded?: boolean;
+  full?: boolean;
+  onClick?: () => void;
+  disabled?: boolean;
 }
 
-export function JnpButton({ text, variant = "primary" }: JnpButtonProps) {
+export function JnpButton({
+  children,
+  variant = "primary",
+  rounded = false,
+  full = false,
+  disabled = false,
+  onClick,
+}: JnpButtonProps) {
   return (
     <button
-      className={clsx({
-        [styles.primary]: variant === "primary",
-        [styles.secondary]: variant === "secondary",
+      className={clsx(styles.button, styles[variant], {
+        [styles.rounded]: rounded,
+        [styles.full]: full,
       })}
+      disabled={disabled}
+      onClick={() => onClick?.()}
     >
-      {text}
+      {children}
     </button>
   );
 }
