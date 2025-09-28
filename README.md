@@ -1,1 +1,0 @@
-- [ ] agregar test unitarios y test visuales (cypress por ejemplo)
