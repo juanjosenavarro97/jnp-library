@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import dts from "vite-plugin-dts";
 import { resolve } from "path";
+import fs from "fs";
 import cssInjectedByJs from "vite-plugin-css-injected-by-js";
 
 export default defineConfig({
@@ -17,12 +18,7 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: {
-        index: resolve(__dirname, "src/index.ts"),
-        "components/index": resolve(__dirname, "src/components/index.ts"),
-        "components/jnp-button/index": resolve(__dirname, "src/components/jnp-button/index.ts"),
-        "components/jnp-input/index": resolve(__dirname, "src/components/jnp-input/index.ts"),
-      },
+      entry: getComponentEntries(),
       formats: ["es"],
     },
     rollupOptions: {
@@ -34,3 +30,24 @@ export default defineConfig({
     },
   },
 });
+
+function getComponentEntries() {
+  const componentsDir = resolve(__dirname, "src/components");
+  const entries: Record<string, string> = {};
+
+  fs.readdirSync(componentsDir).forEach((dirName) => {
+    const fullPath = resolve(componentsDir, dirName);
+
+    if (fs.statSync(fullPath).isDirectory()) {
+      const indexFile = resolve(fullPath, "index.ts");
+      if (fs.existsSync(indexFile)) {
+        entries[`components/${dirName}/index`] = indexFile;
+      }
+    }
+  });
+
+  entries["index"] = resolve(__dirname, "src/index.ts");
+  entries["components/index"] = resolve(__dirname, "src/components/index.ts");
+
+  return entries;
+}

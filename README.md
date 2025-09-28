@@ -1,1 +1,1 @@
-- [ ] agregar ci que ejecute lint, format y audit
+- [ ] agregar test unitarios y test visuales (cypress por ejemplo)
