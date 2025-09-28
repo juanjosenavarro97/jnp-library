@@ -3,6 +3,9 @@ import { defineConfig } from "@playwright/test";
 export default defineConfig({
   testDir: "visual-tests",
   fullyParallel: true,
+  reporter: [
+    ["html", { open: "never", outputFolder: "visual-tests/__results__" }],
+  ],
   snapshotPathTemplate:
     "{testDir}/__screenshots__{/projectName}/{testFilePath}/{arg}{ext}",
   outputDir: "visual-tests/__results__",
