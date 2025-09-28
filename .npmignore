@@ -1,0 +1,23 @@
+.github/
+.husky/
+.lintstagedrc.json
+commitlint.config.js
+eslint.config.js
+playwright.config.ts
+vitest.config.ts
+vitest.setup.ts
+tsconfig*.json
+
+.storybook/
+*.test.tsx
+*.stories.ts
+visual-tests/
+
+
+# Dependencias y caches
+node_modules/
+*.log
+
+# Archivos locales o de build
+dist/
+coverage/
