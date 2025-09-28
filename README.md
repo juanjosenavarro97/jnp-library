@@ -1,0 +1,1 @@
+- [ ] agregar ci que ejecute lint, format y audit

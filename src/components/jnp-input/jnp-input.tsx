@@ -1,7 +1,6 @@
 import styles from "./jnp-input.module.css";
-interface JnpInputProps {}
 
-export function JnpInput({}: JnpInputProps) {
+export function JnpInput() {
   return <input type="text" className={styles.input}></input>;
 }
 
