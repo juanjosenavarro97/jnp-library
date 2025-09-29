@@ -1,53 +1,33 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import dts from "vite-plugin-dts";
-import { resolve } from "path";
-import fs from "fs";
-import cssInjectedByJs from "vite-plugin-css-injected-by-js";
+import { libInjectCss } from "vite-plugin-lib-inject-css";
 
 export default defineConfig({
   plugins: [
     react(),
-    cssInjectedByJs(),
+    libInjectCss(),
     dts({
       tsconfigPath: "./tsconfig.app.json",
-      insertTypesEntry: true,
-      entryRoot: "src",
       outDir: "dist",
     }),
   ],
   build: {
+    cssCodeSplit: true,
     lib: {
-      entry: getComponentEntries(),
+      entry: {
+        "jnp-button/jnp-button": "src/components/jnp-button/index.ts",
+        "jnp-input/jnp-input": "src/components/jnp-input/index.ts",
+      },
       formats: ["es"],
     },
     rollupOptions: {
-      external: [/^react(\/.*)?$/, /^react-dom(\/.*)?$/],
+      external: [/^react(\/.*)?$/, /^react-dom(\/.*)?$/, /^clsx$/],
       output: {
-        entryFileNames: `[name].js`,
-        chunkFileNames: `chunks/[name].js`,
+        preserveModules: false,
+        entryFileNames: "components/[name].js",
+        assetFileNames: "assets/[name][extname]",
       },
     },
   },
 });
-
-function getComponentEntries() {
-  const componentsDir = resolve(__dirname, "src/components");
-  const entries: Record<string, string> = {};
-
-  fs.readdirSync(componentsDir).forEach((dirName) => {
-    const fullPath = resolve(componentsDir, dirName);
-
-    if (fs.statSync(fullPath).isDirectory()) {
-      const indexFile = resolve(fullPath, "index.ts");
-      if (fs.existsSync(indexFile)) {
-        entries[`components/${dirName}/index`] = indexFile;
-      }
-    }
-  });
-
-  entries["index"] = resolve(__dirname, "src/index.ts");
-  entries["components/index"] = resolve(__dirname, "src/components/index.ts");
-
-  return entries;
-}
