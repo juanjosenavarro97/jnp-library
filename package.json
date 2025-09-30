@@ -9,27 +9,13 @@
     "dist"
   ],
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
     "./components/*": {
       "types": "./dist/components/*/index.d.ts",
       "import": "./dist/components/*/index.js"
-    },
-    "./components": {
-      "types": "./dist/components/index.d.ts",
-      "import": "./dist/components/index.js"
     }
   },
   "typesVersions": {
     "*": {
-      "*": [
-        "dist/index.d.ts"
-      ],
-      "components": [
-        "dist/components/index.d.ts"
-      ],
       "components/*": [
         "dist/components/*/index.d.ts"
       ]

@@ -17,8 +17,6 @@ export default defineConfig({
     cssCodeSplit: true,
     lib: {
       entry: {
-        index: "src/index.ts",
-        components: "src/components/index.ts",
         "components/jnp-button": "src/components/jnp-button/index.ts",
         "components/jnp-input": "src/components/jnp-input/index.ts",
       },
