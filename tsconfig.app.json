@@ -35,5 +35,5 @@
     "noUncheckedSideEffectImports": true
   },
   "include": ["src"],
-  "exclude": ["**/*.stories.*"]
+  "exclude": ["**/*.stories.*", "**/*.test.*", "**/*.spec.*"]
 }

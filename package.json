@@ -1,24 +1,26 @@
 {
   "name": "jnp-library",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
   "exports": {
-    "./components": {
-      "types": "./dist/components/index.d.ts",
-      "import": "./dist/components/index.js"
-    },
     "./components/*": {
       "types": "./dist/components/*/index.d.ts",
       "import": "./dist/components/*/index.js"
-    },
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./package.json": "./package.json"
+    }
   },
-  "types": "dist/index.d.ts",
-  "sideEffects": false,
+  "typesVersions": {
+    "*": {
+      "components/*": [
+        "dist/components/*/index.d.ts"
+      ]
+    }
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/",
@@ -44,7 +46,7 @@
     "test:coverage": "vitest run --coverage",
     "test:visual": "playwright test",
     "test:visual:update": "playwright test --update-snapshots",
-    "prepare": "husky install"
+    "prepare": "husky install && vite build"
   },
   "devDependencies": {
     "@commitlint/cli": "20.0.0",
@@ -77,11 +79,12 @@
     "typescript": "5.9.2",
     "typescript-eslint": "8.44.1",
     "vite": "7.1.7",
-    "vite-plugin-css-injected-by-js": "3.5.2",
     "vite-plugin-dts": "4.5.4",
+    "vite-plugin-lib-inject-css": "2.2.2",
     "vitest": "^3.2.4"
   },
   "peerDependencies": {
+    "clsx": ">=2.1.1",
     "react": ">=19.1.1",
     "react-dom": ">=19.1.1"
   }

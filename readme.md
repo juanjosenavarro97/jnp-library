@@ -1,1 +1,1 @@
-- Crear y publicar paquete en npm
+- agregar algun test de accesibilidad, nose si playwrgiht puede hacerlo
