@@ -10,14 +10,17 @@ export default defineConfig({
     dts({
       tsconfigPath: "./tsconfig.app.json",
       outDir: "dist",
+      entryRoot: "src",
     }),
   ],
   build: {
     cssCodeSplit: true,
     lib: {
       entry: {
-        "jnp-button/jnp-button": "src/components/jnp-button/index.ts",
-        "jnp-input/jnp-input": "src/components/jnp-input/index.ts",
+        index: "src/index.ts",
+        components: "src/components/index.ts",
+        "components/jnp-button": "src/components/jnp-button/index.ts",
+        "components/jnp-input": "src/components/jnp-input/index.ts",
       },
       formats: ["es"],
     },
@@ -25,8 +28,10 @@ export default defineConfig({
       external: [/^react(\/.*)?$/, /^react-dom(\/.*)?$/, /^clsx$/],
       output: {
         preserveModules: false,
-        entryFileNames: "components/[name].js",
+        entryFileNames: ({ name }) =>
+          name === "index" ? "[name].js" : `${name}/index.js`,
         assetFileNames: "assets/[name][extname]",
+        chunkFileNames: "chunks/[name]-[hash].js",
       },
     },
   },

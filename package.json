@@ -5,20 +5,33 @@
   "sideEffects": [
     "**/*.css"
   ],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
     "./components/*": {
-      "types": "./dist/components/*.d.ts",
-      "import": "./dist/components/*.js"
+      "types": "./dist/components/*/index.d.ts",
+      "import": "./dist/components/*/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js"
     }
   },
   "typesVersions": {
     "*": {
       "*": [
         "dist/index.d.ts"
+      ],
+      "components": [
+        "dist/components/index.d.ts"
+      ],
+      "components/*": [
+        "dist/components/*/index.d.ts"
       ]
     }
   },
@@ -47,7 +60,7 @@
     "test:coverage": "vitest run --coverage",
     "test:visual": "playwright test",
     "test:visual:update": "playwright test --update-snapshots",
-    "prepare": "husky install"
+    "prepare": "husky install && vite build"
   },
   "devDependencies": {
     "@commitlint/cli": "20.0.0",
