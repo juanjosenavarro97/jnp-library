@@ -46,7 +46,7 @@
     "test:coverage": "vitest run --coverage",
     "test:visual": "playwright test",
     "test:visual:update": "playwright test --update-snapshots",
-    "prepare": "husky install && vite build"
+    "prepare": "vite build"
   },
   "devDependencies": {
     "@commitlint/cli": "20.0.0",
@@ -59,6 +59,7 @@
     "@testing-library/jest-dom": "6.8.0",
     "@testing-library/react": "16.3.0",
     "@testing-library/user-event": "14.6.1",
+    "@types/jest-axe": "3.5.9",
     "@types/react": "19.1.15",
     "@types/react-dom": "19.1.9",
     "@vitejs/plugin-react-swc": "4.1.0",
@@ -71,6 +72,7 @@
     "globals": "16.4.0",
     "happy-dom": "18.0.1",
     "husky": "9.1.7",
+    "jest-axe": "10.0.0",
     "lint-staged": "16.2.3",
     "prettier": "3.6.2",
     "react": "19.1.1",

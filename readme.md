@@ -1,1 +1,1 @@
-- agregar algun test de accesibilidad, nose si playwrgiht puede hacerlo
+- revisar cambio de resolucion en storybook
