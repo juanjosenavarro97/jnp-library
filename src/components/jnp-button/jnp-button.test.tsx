@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import JnpButton, { type Variant } from "./jnp-button";
 import userEvent from "@testing-library/user-event";
 import styles from "./jnp-button.module.css";
+import { axe } from "jest-axe";
 
 const VARIANTS: Variant[] = [
   "primary",
@@ -13,9 +14,12 @@ const VARIANTS: Variant[] = [
 
 describe("JnpButton", () => {
   describe("styles", () => {
-    it("should render", () => {
-      render(<JnpButton>Texto</JnpButton>);
+    it("should render and validate accessibility", async () => {
+      const { container } = render(<JnpButton>Texto</JnpButton>);
       expect(screen.getByText("Texto")).toHaveClass(styles.primary);
+
+      const results = await axe(container);
+      expect(results).toHaveNoViolations();
     });
 
     it("should render rounded", () => {

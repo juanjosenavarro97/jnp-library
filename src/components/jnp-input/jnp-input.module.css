@@ -1,3 +1,44 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  width: 20rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  color: #2c3e50;
+  transition: color 0.3s ease;
+}
+
 .input {
-  color: red;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 0.0625rem solid #d1d5db;
+  border-radius: 0.6rem;
+  background-color: #fff;
+  color: #111827;
+  outline: none;
+  transition:
+    border 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 0.1875rem rgba(37, 99, 235, 0.25);
+}
+
+.input:hover {
+  border-color: #9ca3af;
+}
+
+.input:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+  color: #9ca3af;
 }
