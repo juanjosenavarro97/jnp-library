@@ -1,44 +1,111 @@
+/* Variantes temáticas (igual que en los botones) */
+.primary {
+  --bg: #ffffff;
+  --bg-hover: #f9fafb;
+  --fg: #111827;
+  --border: 1px solid #d1d5db;
+  --border-focus: #2563eb;
+  --shadow-focus: 0 0 0 0.1875rem rgba(37, 99, 235, 0.25);
+}
+
+.secondary {
+  --bg: #eff6ff;
+  --bg-hover: #dbeafe;
+  --fg: #1e3a8a;
+  --border: 1px solid #3b82f6;
+  --border-focus: #2563eb;
+  --shadow-focus: 0 0 0 0.1875rem rgba(37, 99, 235, 0.35);
+}
+
+.warning {
+  --bg: #fefce8;
+  --bg-hover: #fef9c3;
+  --fg: #78350f;
+  --border: 1px solid #facc15;
+  --border-focus: #eab308;
+  --shadow-focus: 0 0 0 0.1875rem rgba(234, 179, 8, 0.35);
+}
+
+.danger {
+  --bg: #fef2f2;
+  --bg-hover: #fee2e2;
+  --fg: #7f1d1d;
+  --border: 1px solid #dc2626;
+  --border-focus: #b91c1c;
+  --shadow-focus: 0 0 0 0.1875rem rgba(185, 28, 28, 0.35);
+}
+
+/* Base de contenedor */
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
   margin: 1rem;
   width: 20rem;
 }
 
-.label {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 0.4rem;
-  color: #2c3e50;
-  transition: color 0.3s ease;
-}
-
+/* Input con variables */
 .input {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 1.25rem 1rem 0.625rem 1rem;
   font-size: 1rem;
-  border: 0.0625rem solid #d1d5db;
+  line-height: 1.25rem;
+  border: var(--border, 1px solid #d1d5db);
   border-radius: 0.6rem;
-  background-color: #fff;
-  color: #111827;
+  background: var(--bg, #fff);
+  color: var(--fg, #111827);
   outline: none;
   transition:
     border 0.25s ease,
-    box-shadow 0.25s ease;
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.input::placeholder {
+  color: transparent;
 }
 
 .input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 0.1875rem rgba(37, 99, 235, 0.25);
+  border-color: var(--border-focus, #2563eb);
+  box-shadow: var(--shadow-focus, 0 0 0 0.1875rem rgba(37, 99, 235, 0.25));
 }
 
-.input:hover {
-  border-color: #9ca3af;
+.input:hover:not(:disabled) {
+  background: var(--bg-hover, #f9fafb);
 }
 
 .input:disabled {
   background-color: #f3f4f6;
   cursor: not-allowed;
+  color: #9ca3af;
+  border: none;
+}
+
+/* Label flotante */
+.label {
+  position: absolute;
+  top: 0.85rem;
+  left: 1rem;
+  font-size: 0.95rem;
+  color: #6b7280;
+  pointer-events: none;
+  background-color: var(--bg, #fff);
+  padding: 0 0.25rem;
+  transition:
+    top 0.2s ease,
+    font-size 0.2s ease,
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.container:focus-within .label,
+.input:not(:placeholder-shown) ~ .label {
+  top: -0.45rem;
+  font-size: 0.75rem;
+  color: var(--border-focus, #2563eb);
+  opacity: 0.95;
+}
+
+.input:disabled ~ .label {
   color: #9ca3af;
 }

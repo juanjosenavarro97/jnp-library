@@ -17,3 +17,24 @@ export const Primary: Story = {
     label: "Label",
   },
 };
+
+export const Secondary: Story = {
+  args: {
+    label: "Label",
+    variant: "secondary",
+  },
+};
+
+export const Warning: Story = {
+  args: {
+    label: "Label",
+    variant: "warning",
+  },
+};
+
+export const Danger: Story = {
+  args: {
+    label: "Label",
+    variant: "danger",
+  },
+};
