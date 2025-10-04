@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.2.0](https://github.com/juanjosenavarro97/jnp-library/compare/v1.1.0...v1.2.0) (2025-10-01)
+
+
+### Features
+
+* add dependabot ([de44f3f](https://github.com/juanjosenavarro97/jnp-library/commit/de44f3f98c7141709ce1ad691d4da5b6c377d498))
+* add npm ignore ([56bffe9](https://github.com/juanjosenavarro97/jnp-library/commit/56bffe9e4f3605f36068069de14cbc328f72bf77))
+* initial input and test accesibility ([0ae13f6](https://github.com/juanjosenavarro97/jnp-library/commit/0ae13f6dfddba8cdf8d77d89dd22d8f195784ace))
+* initial input and test accesibility ([fa94178](https://github.com/juanjosenavarro97/jnp-library/commit/fa9417869fdffc7ee026e305350e5f5a2d1beb88))
+* npm publish ([0980fd8](https://github.com/juanjosenavarro97/jnp-library/commit/0980fd8e25ffb8759c084f464cff7453dca468ab))
+* publish npm ([dc9f9b2](https://github.com/juanjosenavarro97/jnp-library/commit/dc9f9b21f6c0f3c9060ed27be304139402c5a95e))
+* resolve imports ([71099c5](https://github.com/juanjosenavarro97/jnp-library/commit/71099c50ade9813cfb7c818608857949a30f93a1))
+* update package.json ([133fc05](https://github.com/juanjosenavarro97/jnp-library/commit/133fc0594c78e53ccdb281baa527703d4b317e91))
+
 ## [1.1.0](https://github.com/juanjosenavarro97/jnp-library/compare/v1.0.0...v1.1.0) (2025-09-28)
 
 
